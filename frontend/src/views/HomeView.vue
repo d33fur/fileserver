@@ -9,7 +9,7 @@
 import FileList from '../components/FileList.vue'
 
 export default {
-  name: 'Home',
+  name: 'HomeView',  // Изменено с 'Home' на 'HomeView'
   components: {
     FileList
   }

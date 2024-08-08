@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Login</h1>
-    <form @submit.prevent="login">
+    <h1>Register</h1>
+    <form @submit.prevent="register">
       <div>
         <label for="username">Username:</label>
         <input v-model="username" type="text" id="username" required />
@@ -10,14 +10,14 @@
         <label for="password">Password:</label>
         <input v-model="password" type="password" id="password" required />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Register</button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'UserRegister',  // Изменено с 'Register' на 'UserRegister'
   data() {
     return {
       username: '',
@@ -25,8 +25,8 @@ export default {
     }
   },
   methods: {
-    async login() {
-      const response = await fetch('http://127.0.0.1:8080/login', {
+    async register() {
+      const response = await fetch('http://127.0.0.1:8080/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -40,10 +40,10 @@ export default {
       const data = await response.json();
 
       if (response.ok) {
-        alert('Login successful');
-        this.$router.push('/');
+        alert('Registration successful');
+        this.$router.push('/login');
       } else {
-        alert('Login failed: ' + data.message);
+        alert('Registration failed: ' + data.message);
       }
     }
   }
